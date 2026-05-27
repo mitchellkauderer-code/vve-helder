@@ -22,13 +22,15 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-8">Contactgegevens</h2>
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-8">
+                Contactgegevens
+              </h2>
               <ul className="space-y-6">
                 {[
                   { icon: MapPin, label: "Adres", value: "Klopperman 53, 2292 JE Wateringen" },
                   { icon: Phone, label: "Telefoon", value: "085-8006008" },
                   { icon: Mail, label: "E-mail", value: "info@vvehelder.nl" },
-                  { icon: Clock, label: "Bereikbaarheid", value: "Ma – Vr: 08:30 – 17:30" },
+                  { icon: Clock, label: "Bereikbaarheid", value: "Ma - Vr: 08:30 - 17:30" },
                 ].map((item) => (
                   <li key={item.label} className="flex items-start gap-4">
                     <div className="bg-blue-50 w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
@@ -44,7 +46,9 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-              <h3 className="text-xl font-semibold tracking-tight text-gray-900 mb-3">Liever direct een offerte?</h3>
+              <h3 className="text-xl font-semibold tracking-tight text-gray-900 mb-3">
+                Liever direct een offerte?
+              </h3>
               <p className="text-gray-500 text-sm mb-6">
                 Vul het aanvraagformulier in en ontvang binnen 1 werkdag een vrijblijvende offerte op maat.
               </p>
