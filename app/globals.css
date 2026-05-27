@@ -16,7 +16,7 @@
     scroll-behavior: smooth;
   }
   body {
-    color: var(--color-gray-800);
-    background-color: white;
+    background-color: #ffffff;
+    color: #212121;
   }
 }
