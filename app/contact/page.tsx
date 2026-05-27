@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Neem contact op met VvE Helder. Telefoon, e-mail of stuur een bericht.",
+  description: "Neem contact op met VvE Helder.",
 };
 
 export default function ContactPage() {
@@ -17,7 +17,6 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
-
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -44,7 +43,6 @@ export default function ContactPage() {
                 ))}
               </ul>
             </div>
-
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
               <h3 className="text-xl font-semibold tracking-tight text-gray-900 mb-3">
                 Liever direct een offerte?
@@ -52,10 +50,7 @@ export default function ContactPage() {
               <p className="text-gray-500 text-sm mb-6">
                 Vul het aanvraagformulier in en ontvang binnen 1 werkdag een vrijblijvende offerte op maat.
               </p>
-              
-                href="/offerte-aanvragen"
-                className="block bg-gray-900 text-white text-center px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors"
-              >
+              <a href="/offerte-aanvragen" className="block bg-gray-900 text-white text-center px-6 py-3 rounded-full text-sm font-medium">
                 Offerte aanvragen
               </a>
             </div>
