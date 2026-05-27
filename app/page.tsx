@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ClipboardList, PiggyBank, Wrench, CheckCircle } from "lucide-react";
+import { ClipboardList, PiggyBank, Wrench, CheckCircle, FileText, AlertTriangle, Hammer, ArrowRightLeft } from "lucide-react";
 import DienstCard from "@/components/DienstCard";
 import CTABanner from "@/components/CTABanner";
 
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
       <section className="bg-white pt-24 pb-32 px-6">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm font-medium text-blue-600 mb-6 tracking-widest uppercase">VvE Beheer Nederland</p>
@@ -22,21 +21,48 @@ export default function HomePage() {
           </h1>
           <p className="text-xl text-gray-500 max-w-xl mb-12 leading-relaxed">
             Professioneel en transparant beheer van uw Vereniging van Eigenaren.
-            Administratief, financieel én technisch — één aanspreekpunt.
+            Administratief, financieel en technisch — één aanspreekpunt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/offerte-aanvragen"
-              className="bg-gray-900 text-white px-7 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors inline-block text-center"
-            >
+            <Link href="/offerte-aanvragen" className="bg-gray-900 text-white px-7 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors inline-block text-center">
               Offerte aanvragen
             </Link>
-            <Link
-              href="/diensten"
-              className="text-gray-700 px-7 py-3 rounded-full text-sm font-medium border border-gray-200 hover:border-gray-400 transition-colors inline-block text-center"
-            >
+            <Link href="/diensten" className="text-gray-700 px-7 py-3 rounded-full text-sm font-medium border border-gray-200 hover:border-gray-400 transition-colors inline-block text-center">
               Bekijk diensten
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Actieblok */}
+      <section className="px-6 pb-20 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm text-gray-500 mb-5">Hoe kunnen we u helpen?</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              { icon: FileText, label: "Offerte aanvragen", sub: "Vrijblijvend en binnen 1 werkdag", href: "/offerte-aanvragen", accent: true },
+              { icon: AlertTriangle, label: "Schade melden", sub: "Snel en eenvoudig doorgeven", href: "/schade-melden", accent: false },
+              { icon: Hammer, label: "Reparatie indienen", sub: "Onderhoud of storing melden", href: "/reparatie-indienen", accent: false },
+              { icon: ArrowRightLeft, label: "Overstapservice", sub: "Wij regelen de overstap", href: "/overstapservice", accent: false },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex items-center gap-4 p-5 rounded-2xl border transition-all group ${
+                  item.accent
+                    ? "bg-blue-600 border-blue-600 text-white hover:bg-blue-700"
+                    : "bg-white border-gray-100 hover:border-gray-300 text-gray-900"
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${item.accent ? "bg-blue-500" : "bg-gray-50"}`}>
+                  <item.icon size={18} className={item.accent ? "text-white" : "text-blue-600"} />
+                </div>
+                <div>
+                  <p className={`text-sm font-medium ${item.accent ? "text-white" : "text-gray-900"}`}>{item.label}</p>
+                  <p className={`text-xs mt-0.5 ${item.accent ? "text-blue-100" : "text-gray-400"}`}>{item.sub}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -70,24 +96,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <DienstCard
-              icon={ClipboardList}
-              title="Administratief beheer"
-              description="Vergaderingen organiseren, notulen, correspondentie en archief — volledig geregeld."
-              href="/diensten/administratief-beheer"
-            />
-            <DienstCard
-              icon={PiggyBank}
-              title="Financieel beheer"
-              description="Servicekosten, begroting, jaarrekening en reservefonds transparant beheerd."
-              href="/diensten/financieel-beheer"
-            />
-            <DienstCard
-              icon={Wrench}
-              title="Technisch beheer"
-              description="Onderhoud, storingen en renovaties professioneel afgehandeld."
-              href="/diensten/technisch-beheer"
-            />
+            <DienstCard icon={ClipboardList} title="Administratief beheer" description="Vergaderingen organiseren, notulen, correspondentie en archief — volledig geregeld." href="/diensten/administratief-beheer" />
+            <DienstCard icon={PiggyBank} title="Financieel beheer" description="Servicekosten, begroting, jaarrekening en reservefonds transparant beheerd." href="/diensten/financieel-beheer" />
+            <DienstCard icon={Wrench} title="Technisch beheer" description="Onderhoud, storingen en renovaties professioneel afgehandeld." href="/diensten/technisch-beheer" />
           </div>
         </div>
       </section>
@@ -97,12 +108,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl font-semibold tracking-tight text-gray-900 mb-6">
-                Waarom VvE Helder?
-              </h2>
+              <h2 className="text-4xl font-semibold tracking-tight text-gray-900 mb-6">Waarom VvE Helder?</h2>
               <p className="text-gray-500 leading-relaxed mb-8">
-                Wij geloven dat goed VvE beheer draait om duidelijkheid en
-                betrokkenheid. Geen bureaucratie, geen verrassingen.
+                Wij geloven dat goed VvE beheer draait om duidelijkheid en betrokkenheid. Geen bureaucratie, geen verrassingen.
               </p>
               <ul className="space-y-4">
                 {[
@@ -117,10 +125,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/over-ons"
-                className="mt-8 inline-block text-sm text-blue-600 hover:underline"
-              >
+              <Link href="/over-ons" className="mt-8 inline-block text-sm text-blue-600 hover:underline">
                 Lees meer over ons →
               </Link>
             </div>
