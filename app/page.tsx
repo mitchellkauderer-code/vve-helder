@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ClipboardList, PiggyBank, Wrench, CheckCircle, FileText, AlertTriangle, Hammer, ArrowRightLeft } from "lucide-react";
+import { ClipboardList, PiggyBank, Wrench, CheckCircle, FileText, AlertTriangle, Hammer, ArrowRightLeft, ChevronRight } from "lucide-react";
 import DienstCard from "@/components/DienstCard";
 import CTABanner from "@/components/CTABanner";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <section className="bg-white pt-24 pb-32 px-6">
+      <section className="bg-white pt-24 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm font-medium text-blue-600 mb-6 tracking-widest uppercase">VvE Beheer Nederland</p>
           <h1 className="text-5xl sm:text-7xl font-semibold tracking-tight text-gray-900 leading-none mb-8 max-w-3xl">
@@ -37,30 +37,29 @@ export default function HomePage() {
       {/* Actieblok */}
       <section className="px-6 pb-20 bg-white">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm text-gray-500 mb-5">Hoe kunnen we u helpen?</p>
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Direct regelen</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {[
-              { icon: FileText, label: "Offerte aanvragen", sub: "Vrijblijvend en binnen 1 werkdag", href: "/offerte-aanvragen", accent: true },
-              { icon: AlertTriangle, label: "Schade melden", sub: "Snel en eenvoudig doorgeven", href: "/schade-melden", accent: false },
-              { icon: Hammer, label: "Reparatie indienen", sub: "Onderhoud of storing melden", href: "/reparatie-indienen", accent: false },
-              { icon: ArrowRightLeft, label: "Overstapservice", sub: "Wij regelen de overstap", href: "/overstapservice", accent: false },
+              { icon: FileText, label: "Offerte aanvragen", sub: "Vrijblijvend, binnen 1 werkdag", href: "/offerte-aanvragen" },
+              { icon: AlertTriangle, label: "Schade melden", sub: "Snel en eenvoudig doorgeven", href: "/schade-melden" },
+              { icon: Hammer, label: "Reparatie indienen", sub: "Onderhoud of storing melden", href: "/reparatie-indienen" },
+              { icon: ArrowRightLeft, label: "Overstapservice", sub: "Wij regelen de overstap", href: "/overstapservice" },
             ].map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex items-center gap-4 p-5 rounded-2xl border transition-all group ${
-                  item.accent
-                    ? "bg-blue-600 border-blue-600 text-white hover:bg-blue-700"
-                    : "bg-white border-gray-100 hover:border-gray-300 text-gray-900"
-                }`}
+                className="flex items-center justify-between gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-blue-200 hover:bg-blue-50 transition-all group"
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${item.accent ? "bg-blue-500" : "bg-gray-50"}`}>
-                  <item.icon size={18} className={item.accent ? "text-white" : "text-blue-600"} />
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 group-hover:bg-white flex items-center justify-center shrink-0 transition-colors">
+                    <item.icon size={18} className="text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">{item.label}</p>
+                    <p className="text-xs mt-0.5 text-gray-400">{item.sub}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className={`text-sm font-medium ${item.accent ? "text-white" : "text-gray-900"}`}>{item.label}</p>
-                  <p className={`text-xs mt-0.5 ${item.accent ? "text-blue-100" : "text-gray-400"}`}>{item.sub}</p>
-                </div>
+                <ChevronRight size={16} className="text-gray-300 group-hover:text-blue-400 transition-colors shrink-0" />
               </Link>
             ))}
           </div>
